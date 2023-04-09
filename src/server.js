@@ -71,7 +71,7 @@ connectDB();
 const PORT = process.env.PORT || 3030;
 
 // server.listen(8080, () => {
-//   console.log("Listening on port:" + 3030);
+//   console.log("Listening on port:" + 8080);
 // });
 app.listen(PORT, () => {
   console.log("Server running on:" + PORT);
