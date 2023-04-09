@@ -95,6 +95,7 @@ const getAllCodeByIdService = (data) => {
 //user
 const getUserByIdService = (data) => {
   return new Promise(async (resolve, reject) => {
+    console.log(data);
     try {
       if (!data) {
         resolve({
@@ -102,7 +103,7 @@ const getUserByIdService = (data) => {
           message: "Missing parameter",
         });
       } else {
-        let allUser;
+        let allUser = [];
         if (data === "ALL") {
           allUser = await db.User.findAll({
             attributes: {
@@ -143,11 +144,16 @@ const getUserByIdService = (data) => {
             return user;
           });
         }
-        if (allUser) {
+        if (allUser && allUser.length > 0) {
           resolve({
             errCode: 0,
             message: "Find all users successfully",
             data: allUser,
+          });
+        } else {
+          resolve({
+            errCode: 2,
+            message: "Product not found",
           });
         }
       }
@@ -236,7 +242,7 @@ const getProductByIdService = (data) => {
           message: "Missing parameter",
         });
       } else {
-        let products = "";
+        let products = [];
         if (data === "ALL") {
           products = await db.Product.findAll({
             include: [
@@ -268,7 +274,7 @@ const getProductByIdService = (data) => {
           let image = new Buffer(products.image, "base64").toString("binary");
           products.image = image;
         }
-        if (products) {
+        if (products && products.length > 0) {
           resolve({
             errCode: 0,
             message: "Find all products or product successfully",
@@ -489,7 +495,7 @@ const createNewCategoryService = (data) => {
 const getAllCategoryService = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      let categories = "";
+      let categories = [];
       categories = await db.Category.findAll({
         raw: false,
       });

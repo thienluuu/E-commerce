@@ -58,6 +58,7 @@ const getAllCodeById = async (req, res) => {
 //user
 const getUserById = async (req, res) => {
   try {
+    console.log(req.query.id);
     const response = await getUserByIdService(req.query.id);
     return res.status(200).json({
       errCode: response.errCode,
