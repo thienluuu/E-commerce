@@ -40,7 +40,7 @@ const getChatByUserIdService = (data) => {
         });
       } else {
         let chats = await db.Chat.findAll({
-          raw: true,
+          raw: false,
         });
 
         if (chats && chats.length > 0) {

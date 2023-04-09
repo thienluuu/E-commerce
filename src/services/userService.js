@@ -127,7 +127,7 @@ const loginService = (data) => {
             "id",
             "roleId",
           ],
-          raw: true,
+          raw: false,
         });
         if (response) {
           const checkPassword = await bcrypt.compareSync(
@@ -201,7 +201,7 @@ const getAllOrderByUserIdService = (id, statusId) => {
                 attributes: ["image"],
               },
             ],
-            raw: true,
+            raw: false,
           });
           orders = orders.map((order) => {
             let data = order.productData;
@@ -257,7 +257,7 @@ const searchProductService = (data) => {
       } else {
         let products = "";
         let res = await db.Product.findAll({
-          raw: true,
+          raw: false,
         });
         products = res.filter((item) =>
           item.productName.toLowerCase().includes(data)
@@ -361,7 +361,7 @@ const getUserDataService = (data) => {
           attributes: {
             exclude: ["password"],
           },
-          raw: true,
+          raw: false,
         });
         users = users.map((user) => {
           let image = new Buffer(user.image, "base64").toString("binary");
