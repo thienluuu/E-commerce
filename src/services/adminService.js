@@ -1,12 +1,42 @@
 const db = require("../models/index");
 
-const adminData = [
+const adminData = {
+  userName: "Administrator",
+  password: "$2b$10$ckriGESErGbJCzjSxayGXukDBtcGVxy7blN1P3/GP4JIPrLio1WGe",
+  roleId: "R1",
+  token: "176eae0e-03f7-4133-a3da-5daf5c7ca474",
+  email: "thienm199x@gmail.com",
+};
+const allCodeData = [
   {
-    userName: "Administrator",
-    password: "$2b$10$ckriGESErGbJCzjSxayGXukDBtcGVxy7blN1P3/GP4JIPrLio1WGe",
-    roleId: "R1",
-    token: "176eae0e-03f7-4133-a3da-5daf5c7ca474",
-    email: "thienm199x@gmail.com",
+    keyMap: "R1",
+    type: "ROLE",
+    value: "Admin",
+  },
+  {
+    keyMap: "R2",
+    type: "ROLE",
+    value: "User",
+  },
+  {
+    keyMap: "S1",
+    type: "STATUS",
+    value: "New Order",
+  },
+  {
+    keyMap: "S2",
+    type: "STATUS",
+    value: "Shipping",
+  },
+  {
+    keyMap: "F",
+    type: "GENDER",
+    value: "Female",
+  },
+  {
+    keyMap: "M",
+    type: "GENDER",
+    value: "Male",
   },
 ];
 const insertCodeService = () => {
@@ -19,6 +49,7 @@ const insertCodeService = () => {
         token: adminData.token,
         email: adminData.email,
       });
+      await db.AllCode.bulkCreate(allCodeData);
       resolve({
         errCode: 0,
         message: "Admin oke",
