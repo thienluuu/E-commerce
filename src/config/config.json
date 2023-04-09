@@ -1,23 +1,31 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "e-shop",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "db_hanoistore_user",
+    "password": "CWv9BocFSmuvGKPAugBlExxw2a9LnFN5",
+    "database": "db_hanoistore",
+    "host": "dpg-cgomisgu9tun42ppv210-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "logging": false,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
+
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "db_hanoistore_user",
+    "password": "CWv9BocFSmuvGKPAugBlExxw2a9LnFN5",
+    "database": "db_hanoistore",
+    "host": "dpg-cgomisgu9tun42ppv210-a.singapore-postgres.render.com",
+    "dialect": "postgres",
+    "logging": false,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

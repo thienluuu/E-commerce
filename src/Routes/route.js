@@ -23,7 +23,7 @@ const initWebRoutes = (app) => {
 
   //Admin
   router.get("/api/get-all-code-by-id", adminController.getAllCodeById);
-  router.post("api/insert-code", adminController.insertCode);
+  router.post("/api/insert-code", adminController.insertCode);
   router.get("/api/get-user-by-id", adminController.getUserById);
   router.put("/api/edit-user-by-id", adminController.editUserById);
   router.delete("/api/delete-user-by-id", adminController.deleteUserById);

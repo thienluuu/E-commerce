@@ -1,7 +1,33 @@
 const db = require("../models/index");
 
-const adminData = [{}];
-const insertCodeService = () => {};
+const adminData = [
+  {
+    userName: "Administrator",
+    password: "$2b$10$ckriGESErGbJCzjSxayGXukDBtcGVxy7blN1P3/GP4JIPrLio1WGe",
+    roleId: "R1",
+    token: "176eae0e-03f7-4133-a3da-5daf5c7ca474",
+    email: "thienm199x@gmail.com",
+  },
+];
+const insertCodeService = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await db.User.create({
+        userName: adminData.userName,
+        password: adminData.password,
+        roleId: adminData.roleId,
+        token: adminData.token,
+        email: adminData.email,
+      });
+      resolve({
+        errCode: 0,
+        message: "Admin oke",
+      });
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
 
 //all code
 const getAllCodeByIdService = (data) => {
@@ -601,4 +627,5 @@ module.exports = {
   getAllCodeByIdService,
   getAllOrderByStaTusService,
   confirmNewOrderService,
+  insertCodeService,
 };
