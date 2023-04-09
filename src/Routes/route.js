@@ -4,7 +4,9 @@ const adminController = require("../controllers/adminController");
 const chatController = require("../controllers/chatController");
 const router = express.Router();
 const initWebRoutes = (app) => {
+  router.get("/", adminController.serverOn);
   //User
+
   router.post("/api/create-new-user", userController.createNewUser);
   router.post("/api/login", userController.login);
   router.get(

@@ -18,6 +18,11 @@ const {
   insertCodeService,
 } = require("../services/adminService");
 
+const serverOn = (req, res) => {
+  return res.render("admin.ejs", {
+    data: "server on ....",
+  });
+};
 const insertCode = async (req, res) => {
   try {
     const response = await insertCodeService();
@@ -311,4 +316,5 @@ module.exports = {
   getAllOrderByStaTus,
   confirmNewOrder,
   insertCode,
+  serverOn,
 };
