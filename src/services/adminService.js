@@ -84,7 +84,7 @@ const getUserByIdService = (data) => {
                 attributes: ["value"],
               },
             ],
-            raw: false,
+            raw: true,
           });
           allUser = allUser.map((user) => {
             let image = new Buffer(user.image, "base64").toString("binary");
@@ -104,7 +104,7 @@ const getUserByIdService = (data) => {
                 attributes: ["value"],
               },
             ],
-            raw: false,
+            raw: true,
           });
           allUser = allUser.map((user) => {
             let image = new Buffer(user.image, "base64").toString("binary");
@@ -112,11 +112,13 @@ const getUserByIdService = (data) => {
             return user;
           });
         }
-        resolve({
-          errCode: 0,
-          message: "Find all users successfully",
-          data: allUser,
-        });
+        if (allUser) {
+          resolve({
+            errCode: 0,
+            message: "Find all users successfully",
+            data: allUser,
+          });
+        }
       }
     } catch (error) {
       reject(error);
@@ -134,7 +136,7 @@ const editUserService = (data) => {
       } else {
         let res = await db.User.findOne({
           where: { id: data.id },
-          raw: false,
+          raw: true,
         });
         if (res) {
           res.userName = data.userName;
@@ -213,7 +215,7 @@ const getProductByIdService = (data) => {
                 attributes: ["name"],
               },
             ],
-            raw: false,
+            raw: true,
           });
           products = products.map((product) => {
             let image = new Buffer(product.image, "base64").toString("binary");
@@ -230,7 +232,7 @@ const getProductByIdService = (data) => {
                 attributes: ["name"],
               },
             ],
-            raw: false,
+            raw: true,
           });
           let image = new Buffer(products.image, "base64").toString("binary");
           products.image = image;
@@ -291,7 +293,7 @@ const editProductByIdService = (data) => {
       } else {
         let res = await db.Product.findOne({
           where: { id: data.id },
-          raw: false,
+          raw: true,
         });
         if (res) {
           res.productName = data.productName;
@@ -358,7 +360,7 @@ const getProductRelatedService = (id, productType) => {
       } else {
         let products = await db.Product.findAll({
           where: { productType: productType },
-          raw: false,
+          raw: true,
           include: [
             {
               model: db.Category,
@@ -402,7 +404,7 @@ const getProductByCategoryService = (data) => {
       } else {
         let products = await db.Product.findAll({
           where: { productType: data },
-          raw: false,
+          raw: true,
         });
         products = products.map((product) => {
           let image = new Buffer(product.image, "base64").toString("binary");
@@ -458,7 +460,7 @@ const getAllCategoryService = () => {
     try {
       let categories = "";
       categories = await db.Category.findAll({
-        raw: false,
+        raw: true,
       });
       categories = categories.map((category) => {
         let image = new Buffer(category.image, "base64").toString("binary");
@@ -493,7 +495,7 @@ const editCategoryByIdService = (data) => {
       } else {
         let res = await db.Category.findOne({
           where: { id: data.id },
-          raw: false,
+          raw: true,
         });
         if (res) {
           res.name = data.name;

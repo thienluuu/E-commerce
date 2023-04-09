@@ -201,7 +201,7 @@ const getAllOrderByUserIdService = (id, statusId) => {
                 attributes: ["image"],
               },
             ],
-            raw: false,
+            raw: true,
           });
           orders = orders.map((order) => {
             let data = order.productData;
@@ -257,7 +257,7 @@ const searchProductService = (data) => {
       } else {
         let products = "";
         let res = await db.Product.findAll({
-          raw: false,
+          raw: true,
         });
         products = res.filter((item) =>
           item.productName.toLowerCase().includes(data)
@@ -361,7 +361,7 @@ const getUserDataService = (data) => {
           attributes: {
             exclude: ["password"],
           },
-          raw: false,
+          raw: true,
         });
         users = users.map((user) => {
           let image = new Buffer(user.image, "base64").toString("binary");
