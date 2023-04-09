@@ -70,9 +70,9 @@ initWebRoutes(app);
 connectDB();
 const PORT = process.env.PORT || 3030;
 
-server.listen(PORT, () => {
-  console.log("Listening on port:" + PORT);
+server.listen(8080, () => {
+  console.log("Listening on port:" + 8080);
 });
-// app.listen(PORT, () => {
-//   console.log("Server running on:" + PORT);
-// });
+app.listen(PORT, () => {
+  console.log("Server running on:" + PORT);
+});
