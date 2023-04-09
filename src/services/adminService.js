@@ -144,7 +144,7 @@ const getUserByIdService = (data) => {
             return user;
           });
         }
-        if (allUser && allUser.length > 0) {
+        if (allUser) {
           resolve({
             errCode: 0,
             message: "Find all users successfully",
@@ -274,7 +274,7 @@ const getProductByIdService = (data) => {
           let image = new Buffer(products.image, "base64").toString("binary");
           products.image = image;
         }
-        if (products && products.length > 0) {
+        if (products) {
           resolve({
             errCode: 0,
             message: "Find all products or product successfully",
