@@ -2,6 +2,8 @@ const express = require("express");
 const userController = require("../controllers/userController");
 const adminController = require("../controllers/adminController");
 const chatController = require("../controllers/chatController");
+const uploadCloud = require("../middleWare/upLoadCloudinary");
+
 const router = express.Router();
 const initWebRoutes = (app) => {
   router.get("/", adminController.serverOn);
@@ -13,7 +15,11 @@ const initWebRoutes = (app) => {
     "/api/get-product-by-category",
     adminController.getProductByCategory
   );
-  router.post("/api/create-new-order", userController.createNewOrder);
+  router.post(
+    "/api/create-new-order",
+    // uploadCloud.array("image"),
+    userController.createNewOrder
+  );
   router.get("/api/search-product", userController.searchProduct);
   router.get(
     "/api/get-all-order-by-user-id",

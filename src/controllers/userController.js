@@ -41,6 +41,7 @@ const login = async (req, res) => {
   }
 };
 const createNewOrder = async (req, res) => {
+  console.log(req.body);
   try {
     const response = await createNewOrderService(req.body);
     return res.status(200).json({
@@ -67,7 +68,7 @@ const getAllOrderByUserId = async (req, res) => {
       data: response.data,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error);1
     return res.status(500).json({
       errCode: -1,
       message: "Error from server",

@@ -95,7 +95,6 @@ const getAllCodeByIdService = (data) => {
 //user
 const getUserByIdService = (data) => {
   return new Promise(async (resolve, reject) => {
-    console.log(data);
     try {
       if (!data) {
         resolve({

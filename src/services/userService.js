@@ -203,12 +203,6 @@ const getAllOrderByUserIdService = (id, statusId) => {
             ],
             raw: false,
           });
-          orders = orders.map((order) => {
-            let data = order.productData;
-            let image = new Buffer(data[0].image, "base64").toString("binary");
-            order.img = image;
-            return order;
-          });
         } else {
           orders = await db.Order.findAll({
             where: { statusId: "S2", userId: id },
@@ -220,12 +214,6 @@ const getAllOrderByUserIdService = (id, statusId) => {
               },
             ],
           });
-          // orders = orders.map((order) => {
-          //   let img = order.productData.image;
-          //   let image = new Buffer(img, "base64").toString("binary");
-          //   orders.image = image;
-          //   return orders;
-          // });
         }
         if (orders && orders.length > 0) {
           resolve({
